@@ -9,13 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./persongem.css']
 })
 export class PersongemComponent {
+  @Input() id: number = 0;
   @Input() nome: string = '';
   @Input() imagem: string = '';
   @Input() votos: number = 0;
   
-  @Output() votar = new EventEmitter<void>();
+  @Output() votar = new EventEmitter<number>();
   
   onVotar() {
-    this.votar.emit();
+    this.votar.emit(this.id);
   }
 }

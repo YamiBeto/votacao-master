@@ -1,9 +1,15 @@
 <div class="voting-container">
   <h2>Votação</h2>
-  <app-persongem 
-    [nome]="nome"
-    [imagem]="imagem"
-    [votos]="votos"
-    (votar)="onVotar()">
-  </app-persongem>
+  <div class="characters-grid">
+    @for (personagem of personagens; track personagem.id) {
+      <app-persongem 
+        [id]="personagem.id"
+        [nome]="personagem.nome"
+        [imagem]="personagem.imagem"
+        [votos]="personagem.votos"
+        (votar)="onVotar(personagem.id)"
+        [ngClass]="'character-' + personagem.nome.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')">
+      </app-persongem>
+    }
+  </div>
 </div>
